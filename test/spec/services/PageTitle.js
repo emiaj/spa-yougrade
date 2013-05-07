@@ -20,7 +20,7 @@ describe('Service: PageTitle', function () {
   });
 
   it('returns the system name with the title as suffix if the title has been set',function(){
-    PageTitle.setTitle("Home");
+    PageTitle.setTitle('Home');
     expect(PageTitle.getTitle()).toBe(SystemInfo.name + ':::Home');
   });
 });
