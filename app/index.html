@@ -28,7 +28,7 @@
     
     <div class="container">
       <div class="row">
-        <div class="span12" ng-view="navigation">
+        <div class="span12" ng-include src="'views/navbar.html'" ng-controller="CurrentIdentityCtrl">
         </div>
         <div class="span12">
           <div class="content">
@@ -48,7 +48,15 @@
         </div>
       </div>
     </div>
-    <div ng-view="footer"></div>
+    <div class="container navbar">
+      <div class="row">
+        <div class="span12">
+          <footer class="footer">
+            <p class="pull-right">&copy; YouGrade 2013 | Beta.</p>
+          </footer>
+        </div>
+      </div>
+    </div>
 
     <script src="components/angular/angular.js"></script>
     <script src="components/angular-resource/angular-resource.js"></script>
@@ -64,6 +72,8 @@
     <script src="scripts/controllers/PageTitle.js"></script>
     <script src="scripts/controllers/ModuleInfo.js"></script>
     <script src="scripts/services/ModuleInfoService.js"></script>
+    <script src="scripts/services/SecurityContext.js"></script>
+    <script src="scripts/controllers/CurrentIdentity.js"></script>
     <!-- endbuild -->
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
