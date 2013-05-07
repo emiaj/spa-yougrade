@@ -28,7 +28,7 @@
     
     <div class="container">
       <div class="row">
-        <div class="span12" ng-view="navigation">
+        <div class="span12" ui-view="navbar">
         </div>
         <div class="span12">
           <div class="content">
@@ -43,12 +43,19 @@
           </div>
         </div>
         <div class="span12">
-          <div class="container" ng-view>
+          <div class="container" ng-view ng-controller="MainCtrl">
           </div>
         </div>
       </div>
     </div>
-    <div ng-view="footer"></div>
+    <div class="container navbar">
+      <div class="span12">
+        <footer class="footer">
+          <p class="pull-right">&copy; YouGrade 2013 | Beta.</p>
+        </footer>
+      </div>
+    </div>
+
 
     <script src="components/angular/angular.js"></script>
     <script src="components/angular-resource/angular-resource.js"></script>

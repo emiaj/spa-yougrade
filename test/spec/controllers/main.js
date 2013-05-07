@@ -7,25 +7,24 @@ describe('Controller: MainCtrl', function () {
 
   var MainCtrl,
     scope,
-    theTitle;
+    theState;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
     MainCtrl = $controller('MainCtrl', {
       $scope: scope,
-      PageTitle : {
-        setTitle : function(title){
-          theTitle = title;
+      $state : {
+        transitionTo : function(state){
+          theState = state;
         }
       }
     });
   }));
-
   it('should attach a list of awesomeThings to the scope', function () {
     expect(scope.awesomeThings.length).toBe(3);
   });
-  it('sets the page title to Home',function(){
-    expect(theTitle).toBe('Home');
+  it('sets the state to main',function(){
+    expect(theState).toBe('main');
   });
 });

@@ -1,13 +1,30 @@
 'use strict';
 
 angular.module('spaYougradeApp')
-  .controller('MainCtrl', function ($scope,PageTitle,ModuleInfoService) {
+  .config(function($stateProvider) {
+    $stateProvider.state('main',{
+      url : '/',
+      views:{
+        '':{
+          templateUrl: 'views/main.html',
+          controller: function(PageTitle,ModuleInfoService){
+            PageTitle.setTitle('Home');
+            ModuleInfoService.moduleTitle = 'Home';
+            ModuleInfoService.moduleDescription = '';
+          }
+        },
+        navbar:{
+          templateUrl:'views/navbar.html'
+        }
+      }
+    });
+  })
+  .controller('MainCtrl', function ($scope,$state) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
-    PageTitle.setTitle('Home');
-    ModuleInfoService.moduleTitle = 'Home';
-    ModuleInfoService.moduleDescription = '';
+    $state.transitionTo('main');
   });
+
