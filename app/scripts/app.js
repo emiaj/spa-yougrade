@@ -1,13 +1,11 @@
 'use strict';
 
-angular.module('spaYougradeApp', [])
-  .config(function ($routeProvider) {
+angular.module('spaYougradeApp', ['ui.compat'])
+  .config(function($stateProvider, $routeProvider, $urlRouterProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
       });
+    $urlRouterProvider.when('/','/').otherwise('/');
   });
