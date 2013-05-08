@@ -5,10 +5,4 @@ angular.module('spaYougradeApp')
     PageTitle.setTitle('Login');
     ModuleInfoService.moduleTitle = 'Login';
     ModuleInfoService.moduleDescription = 'Enter your credentials below to access the system';
-
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
   });

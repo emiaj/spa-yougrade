@@ -5,10 +5,4 @@ angular.module('spaYougradeApp')
     PageTitle.setTitle('User Profile');
     ModuleInfoService.moduleTitle = 'User Profile';
     ModuleInfoService.moduleDescription = '';
-
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
   });
