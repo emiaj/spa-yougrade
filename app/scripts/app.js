@@ -1,18 +1,23 @@
 'use strict';
 
-angular.module('spaYougradeApp', ['ui.compat'])
+angular.module('spaYougradeApp', ['ui.compat','ui.bootstrap'])
   .config(function($routeProvider, $urlRouterProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
-      });
-
-    $routeProvider
+      })
 	    .when('/login', {
 	      templateUrl: 'views/login.html',
 	      controller: 'LoginCtrl'
 	    })
+      .when('/logout', {
+        controller: 'LogOutCtrl'
+      })
+      .when('/profile', {
+        templateUrl: 'views/profile.html',
+        controller: 'ProfileCtrl'
+      });
     $urlRouterProvider.when('/','/').otherwise('/');
   })
   .run(function($rootScope,$location,SecurityContext){
