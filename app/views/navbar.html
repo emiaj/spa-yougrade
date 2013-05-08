@@ -1,6 +1,6 @@
-<div class="navbar">
+<div class="navbar" ng-controller="CurrentIdentityCtrl">
   <div class="navbar-inner navbar-fixed-top">
-    <a class="brand" href="#">YouGrade</a>
+    <a class="brand" href="#" ng-bind="name"></a>
     <ul class="nav pull-right" ng-show="currentIdentity.isAuthenticated()">
       <li>
         <a href="javascript:void(0);">
