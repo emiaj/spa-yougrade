@@ -8,15 +8,15 @@ angular.module('spaYougradeApp')
     return {
       getByLang: function (lang) {
         var quizzes = [];
-        for (var i = 1; i < 5; i++) {
+        if(lang=='en'){
           quizzes.push({
-            id: i+lang,
-            title:'[' + lang + ']' + 'Learning English with "The Big Bang Theory"#' + i,
-            description:'Show your knowledge on the English language using videos from The Big Bang Theory',
-            thumbnail:'http://img.youtube.com/vi/fRaUVp5DfRk/0.jpg',
-            url:'#/quizz/' + i
-          });
-        };
+              id: 1,
+              title:'Learning English with "The Big Bang Theory"',
+              description:'Show your knowledge on the English language using videos from The Big Bang Theory',
+              thumbnail:'http://img.youtube.com/vi/fRaUVp5DfRk/0.jpg',
+              url:'#/quizz/' + 1
+            });
+        }
         return quizzes;
       },
       getById: function(id){
@@ -136,6 +136,26 @@ angular.module('spaYougradeApp')
           ]
         };
         return quizz;
+      },
+      answersFor: function(quizzId){
+        return [
+          {
+            question:0,
+            alternative:2
+          },
+          {
+            question:1,
+            alternative:1
+          },
+          {
+            question:2,
+            alternative:3
+          },
+          {
+            question:3,
+            alternative:0
+          }
+        ];
       }
     };
   });

@@ -25,6 +25,10 @@ angular.module('spaYougradeApp', ['ui.compat','ui.bootstrap'])
       .when('/quizz/:quizzId/:quizzTakeId/:questionId', {
         templateUrl: 'views/QuizzTake.html',
         controller: 'QuizzTakeCtrl'
+      })
+      .when('/results/:quizzId/:quizzTakeId', {
+        templateUrl: 'views/QuizzResult.html',
+        controller: 'QuizzResultCtrl'
       });
     $urlRouterProvider.when('/','/').otherwise('/');
   });

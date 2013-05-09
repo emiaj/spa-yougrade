@@ -8,7 +8,7 @@
 	<div class="span12">
 	  <hr/>
 	    <label class="radio" ng-repeat="alternative in question.alternatives">
-	      <input type="radio" name="SelectedAlternative" ng-model="answer.alternative" value="{{$index}}}"></input>
+	      <input type="radio" name="SelectedAlternative" ng-model="answer.alternative" value="{{$index}}"></input>
 	      {{$index+1}}. {{alternative.text}}
 	    </label>
 	</div>
@@ -17,6 +17,6 @@
 	  <a class="btn" href="/#">Return to Home</a>
 	  <a ng-show="hasPrevious" class="btn" href="/#/quizz/{{quizzId}}/{{quizzTakeId}}/{{questionId-1}}">Previous Question</a>
 	  <a ng-show="hasNext" class="btn" href="/#/quizz/{{quizzId}}/{{quizzTakeId}}/{{questionId+1}}">Next Question</a>
-	  <a ng-show="isLast" class="btn btn-primary">View Results</a>
+	  <a ng-show="isLast" class="btn btn-primary" href="/#/results/{{quizzId}}/{{quizzTakeId}}">View Results</a>
 	</div>
 </fieldset>

@@ -20,13 +20,6 @@ angular.module('spaYougradeApp')
           question:question,
           alternative:-1
         };
-      },
-      allAnswers: function(){
-        var all = [];
-        for(var a in this.answers){
-          all.push(this.answers[a]);
-        }
-        return all;
       }
     };
 

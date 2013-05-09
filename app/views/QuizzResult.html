@@ -1,0 +1,47 @@
+<div class="span12">
+  <div class="row">
+    <div class="span12">
+      <img ng-src="{{quizz.thumbnail}}" alt=""/>
+    </div>
+  </div>
+  <hr/>
+  <div class="row">
+    <div class="span12">
+      <div class="alert alert-block" ng-class="{'alert-error':!grade.approved(),'alert-success':grade.approved()}">
+        <h4 ng-show="grade.approved()">
+          Congratulations, you completed the quizz successfully.
+        </h4>
+        <h4 ng-hide="grade.approved()">
+          We are sorry, you have not completed the quizz successfully.
+        </h4>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span4">
+      <label>
+        Correct Answers: ({{grade.correct}})
+        <div class="progress progress-success">
+          <div class="bar" style="width:{{correctPercentage}}%"></div>
+        </div>
+      </label>
+      <label>
+        Incorrect Answers: ({{grade.incorrect}})
+        <div class="progress progress-danger">
+          <div class="bar" style="width:{{incorrectPercentage}}%"></div>
+        </div>
+      </label>
+    </div>
+  </div>
+  <hr/>
+  <div class="row">
+    <div class="span12">
+      <a class="btn btn-info"  href="/#/quizz/{{quizzId}}/{{retakeQuizzId}}/1">
+      	Retake Quizz
+      </a>
+      <a class="btn btn-success" href="/#">
+      	Return Home
+      </a>
+    </div>
+  </div>
+</div>
