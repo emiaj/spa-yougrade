@@ -18,17 +18,17 @@ angular.module('spaYougradeApp', ['ui.compat','ui.bootstrap'])
         templateUrl: 'views/profile.html',
         controller: 'ProfileCtrl'
       })
-      .when('/quizz/:quizzId', {
-        templateUrl: 'views/QuizzDetails.html',
-        controller: 'QuizzDetailsCtrl'
+      .when('/quiz/:quizId', {
+        templateUrl: 'views/QuizDetails.html',
+        controller: 'QuizDetailsCtrl'
       })
-      .when('/quizz/:quizzId/:quizzTakeId/:questionId', {
-        templateUrl: 'views/QuizzTake.html',
-        controller: 'QuizzTakeCtrl'
+      .when('/exam/:examId/:quizId/:questionId', {
+        templateUrl: 'views/Exam.html',
+        controller: 'ExamCtrl'
       })
-      .when('/results/:quizzId/:quizzTakeId', {
-        templateUrl: 'views/QuizzResult.html',
-        controller: 'QuizzResultCtrl'
+      .when('/results/:examId/:quizId', {
+        templateUrl: 'views/ExamResult.html',
+        controller: 'ExamResultCtrl'
       });
     $urlRouterProvider.when('/','/').otherwise('/');
   });

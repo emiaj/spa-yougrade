@@ -15,8 +15,8 @@
 	<div class="span12">
 	  <hr/>
 	  <a class="btn" href="/#">Return to Home</a>
-	  <a ng-show="hasPrevious" class="btn" href="/#/quizz/{{quizzId}}/{{quizzTakeId}}/{{questionId-1}}">Previous Question</a>
-	  <a ng-show="hasNext" class="btn" href="/#/quizz/{{quizzId}}/{{quizzTakeId}}/{{questionId+1}}">Next Question</a>
-	  <a ng-show="isLast" class="btn btn-primary" href="/#/results/{{quizzId}}/{{quizzTakeId}}">View Results</a>
+	  <a ng-show="hasPrevious" class="btn" href="/#/exam/{{examId}}/{{quizId}}/{{questionId-1}}">Previous Question</a>
+	  <a ng-show="hasNext" class="btn" href="/#/exam/{{examId}}/{{quizId}}/{{questionId+1}}">Next Question</a>
+	  <a ng-show="isLast" class="btn btn-primary" href="/#/results/{{examId}}/{{quizId}}">View Results</a>
 	</div>
 </fieldset>

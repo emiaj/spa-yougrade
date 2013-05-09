@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('spaYougradeApp')
-  .factory('QuizzService', function () {
+  .factory('QuizService', function () {
     // Service logic
     // ...
     // Public API here
@@ -18,7 +18,7 @@ angular.module('spaYougradeApp')
         return quizzes;
       },
       getById: function(id){
-        var quizz = {
+        var quiz = {
           id : id,
           name : 'Learning English with "The Big Bang Theory"',
           description:'Show your knowledge on the English language using videos from The Big Bang Theory',
@@ -82,7 +82,7 @@ angular.module('spaYougradeApp')
               'friend Leonard the problem with teleportation. At the end, Leonard seems ' +
               'to agree with Sheldon that there is a problem. What problem they are ' +
               'talking about?',
-              video:'PQZzSrAIp-E',
+              video:'PQzSrAIp-E',
               alternatives:[
                 {
                   text:'Both agreed that it would be a problem if the teletransporter ' +
@@ -133,10 +133,10 @@ angular.module('spaYougradeApp')
             }
           ]
         };
-        return quizz;
+        return quiz;
       },
-      answersFor: function(quizzId){
-        quizzId=quizzId;
+      answersFor: function(quizId){
+        quizId=quizId;
         return [
           {
             question:0,

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('spaYougradeApp')
-  .factory('QuizzTakeService', function () {
+  .factory('ExamService', function () {
     // Service logic
     // ...
     // Public API here
@@ -9,12 +9,12 @@ angular.module('spaYougradeApp')
     var cache = {
     };
 
-    var QuizzTakeData = function(key){
+    var ExamData = function(key){
       this.key = key;
       this.answers = {};
     };
 
-    QuizzTakeData.prototype = {
+    ExamData.prototype = {
       answerFor: function(question){
         var answer = this.answers[question];
         if(!answer){
@@ -32,7 +32,7 @@ angular.module('spaYougradeApp')
       dataFor: function (key) {
         var data = cache[key];
         if(!data){
-          data = new QuizzTakeData(key);
+          data = new ExamData(key);
           cache[key] = data;
         }
         return data;

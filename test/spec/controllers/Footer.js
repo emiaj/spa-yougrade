@@ -12,11 +12,14 @@ describe('Controller: FooterCtrl', function () {
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
     FooterCtrl = $controller('FooterCtrl', {
-      $scope: scope
+      $scope: scope,
+      SystemInfo: {
+        name:'Foo'
+      }
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
+  it('sets the scope system name',function(){
+    expect(scope.name).toBe('Foo');
   });
 });

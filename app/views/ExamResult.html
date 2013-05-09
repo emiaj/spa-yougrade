@@ -1,7 +1,7 @@
 <div class="span12">
   <div class="row">
     <div class="span12">
-      <img ng-src="{{quizz.thumbnail}}" alt=""/>
+      <img ng-src="{{quiz.thumbnail}}" alt=""/>
     </div>
   </div>
   <hr/>
@@ -9,10 +9,10 @@
     <div class="span12">
       <div class="alert alert-block" ng-class="{'alert-error':!grade.approved(),'alert-success':grade.approved()}">
         <h4 ng-show="grade.approved()">
-          Congratulations, you completed the quizz successfully.
+          Congratulations, you completed the quiz successfully.
         </h4>
         <h4 ng-hide="grade.approved()">
-          We are sorry, you have not completed the quizz successfully.
+          We are sorry, you have not completed the quiz successfully.
         </h4>
       </div>
     </div>
@@ -36,8 +36,8 @@
   <hr/>
   <div class="row">
     <div class="span12">
-      <a class="btn btn-info"  href="/#/quizz/{{quizzId}}/{{retakeQuizzId}}/1">
-      	Retake Quizz
+      <a class="btn btn-info"  href="/#/exam/{{retakeExamId}}/{{quizId}}/1">
+      	Retake Quiz
       </a>
       <a class="btn btn-success" href="/#">
       	Return Home

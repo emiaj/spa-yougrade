@@ -6,17 +6,31 @@ describe('Controller: QuizLanguagesCtrl', function () {
   beforeEach(module('spaYougradeApp'));
 
   var QuizLanguagesCtrl,
-    scope;
+    scope,
+    theLanguages;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
+    theLanguages = [
+      {
+        name:'en'
+      },
+      {
+        name:'jp'
+      }
+    ];
     QuizLanguagesCtrl = $controller('QuizLanguagesCtrl', {
-      $scope: scope
+      $scope: scope,
+      QuizLanguagesService: {
+        availableLanguages: function(){
+          return theLanguages;
+        }
+      }
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
+  it('sets the available languages', function () {
+    expect(scope.languages).toBe(theLanguages);
   });
 });

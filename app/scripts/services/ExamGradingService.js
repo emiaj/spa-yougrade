@@ -1,25 +1,25 @@
 'use strict';
 
 angular.module('spaYougradeApp')
-  .factory('QuizzGradingService', function (QuizzTakeService,QuizzService) {
+  .factory('ExamGradingService', function (ExamService,QuizService) {
     // Service logic
     // ...
     // Public API here
     return {
-      evaluate: function (quizzId,quizzTakeId) {
-        var quizzTake = QuizzTakeService.dataFor(quizzTakeId);
-        var quizzAnswers = QuizzService.answersFor(quizzId);
+      evaluate: function (quizId,quizTakeId) {
+        var exam = ExamService.dataFor(quizTakeId);
+        var quizAnswers = QuizService.answersFor(quizId);
         var grade = {
-          questions : quizzAnswers.length,
+          questions : quizAnswers.length,
           correct : 0,
           incorrect: 0,
           approved : function(){
             return this.correct>this.incorrect;
           }
         };
-        for (var i = 0; i < quizzAnswers.length; i++) {
-          var answer = quizzAnswers[i];
-          var userAnswer = quizzTake.answerFor(answer.question);
+        for (var i = 0; i < quizAnswers.length; i++) {
+          var answer = quizAnswers[i];
+          var userAnswer = exam.answerFor(answer.question);
           if(answer.alternative === parseInt(userAnswer.alternative,10)){
             grade.correct+=1;
           }

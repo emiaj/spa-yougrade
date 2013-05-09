@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('spaYougradeApp')
-  .factory('QuizzLanguageService', function () {
+  .factory('QuizLanguagesService', function () {
     // Service logic
     // ...
     // Public API here
