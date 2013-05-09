@@ -3,6 +3,7 @@
 angular.module('spaYougradeApp')
   .controller('QuizzTakeCtrl', function ($scope, $routeParams,QuizzService,ModuleInfoService) {
   	$scope.quizzId = $routeParams.quizzId;
+    $scope.quizzTakeId = $routeParams.quizzTakeId;
   	$scope.questionId = parseInt($routeParams.questionId);
   	$scope.quizz = QuizzService.getById($routeParams.quizzId)
   	$scope.question = $scope.quizz.questions[$scope.questionId-1];

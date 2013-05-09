@@ -22,7 +22,7 @@ angular.module('spaYougradeApp', ['ui.compat','ui.bootstrap'])
         templateUrl: 'views/QuizzDetails.html',
         controller: 'QuizzDetailsCtrl'
       })
-      .when('/quizz/:quizzId/:questionId', {
+      .when('/quizz/:quizzId/:quizzTakeId/:questionId', {
         templateUrl: 'views/QuizzTake.html',
         controller: 'QuizzTakeCtrl'
       });
