@@ -20,13 +20,13 @@ angular.module('spaYougradeApp')
         for (var i = 0; i < quizzAnswers.length; i++) {
           var answer = quizzAnswers[i];
           var userAnswer = quizzTake.answerFor(answer.question);
-          if(answer.alternative == parseInt(userAnswer.alternative)){
+          if(answer.alternative === parseInt(userAnswer.alternative,10)){
             grade.correct+=1;
           }
           else{
             grade.incorrect+=1;
           }
-        };
+        }
         return grade;
       }
     };

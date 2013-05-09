@@ -5,7 +5,7 @@ angular.module('spaYougradeApp')
     // Service logic
     // ...
     // Public API here
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     return {
       getValue: function (count) {
         if(count <= 0){

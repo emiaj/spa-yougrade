@@ -8,15 +8,13 @@ angular.module('spaYougradeApp')
     return {
       getByLang: function (lang) {
         var quizzes = [];
-        if(lang=='en'){
-          quizzes.push({
-              id: 1,
-              title:'Learning English with "The Big Bang Theory"',
-              description:'Show your knowledge on the English language using videos from The Big Bang Theory',
-              thumbnail:'http://img.youtube.com/vi/fRaUVp5DfRk/0.jpg',
-              url:'#/quizz/' + 1
-            });
-        }
+        quizzes.push({
+            id: 1,
+            title:'Learning English with "The Big Bang Theory"',
+            description:'Show your knowledge on the English language using videos from The Big Bang Theory',
+            thumbnail:'http://img.youtube.com/vi/fRaUVp5DfRk/0.jpg',
+            lang:lang
+          });
         return quizzes;
       },
       getById: function(id){
@@ -35,8 +33,8 @@ angular.module('spaYougradeApp')
               'that paper beats Spock. How can Spock be defeated by paper?',
               video:'iapcKVn7DdY',
               alternatives:[
-                {                  
-                  text:'A large sheet of paper can wrap Spock, in the same way that it ' + 
+                {
+                  text:'A large sheet of paper can wrap Spock, in the same way that it ' +
                   'covers rock.'
                 },
                 {
@@ -48,7 +46,7 @@ angular.module('spaYougradeApp')
                   'of his theories.'
                 },
                 {
-                  text:'Paper doesn\'t beat Spock. In fact, Sheldon points out that Spock ' + 
+                  text:'Paper doesn\'t beat Spock. In fact, Sheldon points out that Spock ' +
                   'against paper ends in a tie.'
                 }
               ]
@@ -66,11 +64,11 @@ angular.module('spaYougradeApp')
                   text:'Howard convinced Sheldon to practice rock climbing with Kripke.'
                 },
                 {
-                  text:'By drawing a loop counter and an escape to the least ' + 
+                  text:'By drawing a loop counter and an escape to the least ' +
                   'objectionable activity.'
                 },
                 {
-                  text:'In fact, Howard doesn\'t help Sheldon at all. Sheldon decides to ' + 
+                  text:'In fact, Howard doesn\'t help Sheldon at all. Sheldon decides to ' +
                   'go rock climbing by itself.'
                 },
                 {
@@ -82,17 +80,17 @@ angular.module('spaYougradeApp')
             {
               description:'At the University cafeteria, Sheldon is discussing with his ' +
               'friend Leonard the problem with teleportation. At the end, Leonard seems ' +
-              'to agree with Sheldon that there is a problem. What problem they are ' + 
+              'to agree with Sheldon that there is a problem. What problem they are ' +
               'talking about?',
               video:'PQZzSrAIp-E',
               alternatives:[
                 {
                   text:'Both agreed that it would be a problem if the teletransporter ' +
-                'had to disintegrate the original Sheldon in order to create the ' + 
+                'had to disintegrate the original Sheldon in order to create the ' +
                 'new Sheldon.'
                 },
                 {
-                  text:'Both agreed that it would be a problem if the new Sheldon ' + 
+                  text:'Both agreed that it would be a problem if the new Sheldon ' +
                   'created by the teletransporter had no new improvements compared to the ' +
                   'old Sheldon.'
                 },
@@ -102,24 +100,24 @@ angular.module('spaYougradeApp')
                   'new Sheldon, and Leonard just pretended to care about it.'
                 },
                 {
-                  text:'Sheldon said he would never use a teletransporter, because ' + 
+                  text:'Sheldon said he would never use a teletransporter, because ' +
                   'this would disintegrate the original Sheldon in order to create ' +
-                  'the new Sheldon. Leonard, on the other hand, thought it was a ' + 
-                  'problem if the new Sheldon was exactly the same as the old Sheldon ' + 
+                  'the new Sheldon. Leonard, on the other hand, thought it was a ' +
+                  'problem if the new Sheldon was exactly the same as the old Sheldon ' +
                   '(without improvements), but Sheldon didn\'t understand Leonard\'s sarcasm.'
                 }
               ]
             },
             {
               description:'In this video, somebody is auctioning a time machine replica ' +
-              'from the "Time Machine" movie. Leonard bid $800, and when the auction ends, ' + 
-              'Sheldon is surprised that no one else bid, since it\'s a piece of sci-fi ' + 
-              'movie memorabilia. In the end of the video, Sheldon says he understood why ' + 
+              'from the "Time Machine" movie. Leonard bid $800, and when the auction ends, ' +
+              'Sheldon is surprised that no one else bid, since it\'s a piece of sci-fi ' +
+              'movie memorabilia. In the end of the video, Sheldon says he understood why ' +
               'no-one else bid. Why he said so?',
               video:'fRaUVp5DfRk',
               alternatives:[
                 {
-                  text:'Because instead of a miniature, Sheldon found the time ' + 
+                  text:'Because instead of a miniature, Sheldon found the time ' +
                   'machine replica to be in fact full-sized and extravagant.'
                 },
                 {
@@ -138,6 +136,7 @@ angular.module('spaYougradeApp')
         return quizz;
       },
       answersFor: function(quizzId){
+        quizzId=quizzId;
         return [
           {
             question:0,
