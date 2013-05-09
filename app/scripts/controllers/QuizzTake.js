@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('spaYougradeApp')
-  .controller('QuizzTakeCtrl', function ($scope, $routeParams,QuizzService,ModuleInfoService) {
+  .controller('QuizzTakeCtrl', function ($scope, $routeParams,ModuleInfoService,QuizzService,QuizzTakeService) {
   	$scope.quizzId = $routeParams.quizzId;
     $scope.quizzTakeId = $routeParams.quizzTakeId;
   	$scope.questionId = parseInt($routeParams.questionId);
@@ -10,6 +10,9 @@ angular.module('spaYougradeApp')
   	$scope.hasPrevious = $scope.questionId>1 && $scope.quizz.questions.length > 1;
   	$scope.hasNext = $scope.questionId < $scope.quizz.questions.length;
   	$scope.isLast = $scope.questionId == $scope.quizz.questions.length;
-  	ModuleInfoService.moduleTitle = $scope.quizz.name;
-  	ModuleInfoService.moduleDescription = $scope.quizz.description;
+    $scope.quizzTake = QuizzTakeService.dataFor($scope.quizzTakeId);
+    $scope.answer = $scope.quizzTake.answerFor($scope.questionId-1);
+
+    ModuleInfoService.moduleTitle = $scope.quizz.name;
+    ModuleInfoService.moduleDescription = $scope.quizz.description;
   });
