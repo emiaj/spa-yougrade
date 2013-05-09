@@ -1,0 +1,22 @@
+<fieldset>
+	<legend>
+	  {{question.description}}
+	</legend>
+	<div class="span12">
+	  <iframe width="420" height="315" src="http://www.youtube.com/embed/{{question.video}}" frameborder="0" allowfullscreen=""></iframe>
+	</div>
+	<div class="span12">
+	  <hr/>
+	    <label class="radio" ng-repeat="alternative in question.alternatives">
+	      <input type="radio" name="SelectedAlternative" value="{{$index}}}"></input>
+	      {{$index+1}}. {{alternative.text}}
+	    </label>
+	</div>
+	<div class="span12">
+	  <hr/>
+	  <a class="btn" href="/#">Return to Home</a>
+	  <a ng-show="hasPrevious" class="btn" href="/#/quizz/{{quizzId}}/{{questionId-1}}">Previous Question</a>
+	  <a ng-show="hasNext" class="btn" href="/#/quizz/{{quizzId}}/{{questionId+1}}">Next Question</a>
+	  <a ng-show="isLast" class="btn btn-primary">View Results</a>
+	</div>
+</fieldset>
