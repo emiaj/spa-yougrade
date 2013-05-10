@@ -6,8 +6,8 @@ angular.module('spaYougradeApp')
     // ...
     // Public API here
     return {
-      evaluate: function (quizId,quizTakeId) {
-        var exam = ExamService.dataFor(quizTakeId);
+      evaluate: function (quizId,examId) {
+        var exam = ExamService.dataFor(examId);
         var quizAnswers = QuizService.answersFor(quizId);
         var grade = {
           questions : quizAnswers.length,
