@@ -11,12 +11,7 @@ angular.module('spaYougradeApp')
           {
             name:'en',
             title:'English'
-          },
-          {
-            name:'es',
-            title:'Español'
           }
-
         ];
       }
     };
