@@ -82,7 +82,7 @@ angular.module('spaYougradeApp')
               'friend Leonard the problem with teleportation. At the end, Leonard seems ' +
               'to agree with Sheldon that there is a problem. What problem they are ' +
               'talking about?',
-              video:'PQzSrAIp-E',
+              video:'PQZzSrAIp-E',
               alternatives:[
                 {
                   text:'Both agreed that it would be a problem if the teletransporter ' +
