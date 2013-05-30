@@ -8,14 +8,16 @@ angular.module('spaYougradeApp')
     var questionIndex = questionNumber-1;
     $scope.nextQuestion = questionNumber+1;
     $scope.previousQuestion = questionNumber-1;
-    $scope.quiz = QuizService.getById($routeParams.quizId);
-    $scope.question = $scope.quiz.questions[questionIndex];
     $scope.hasPrevious = questionNumber>1;
-    $scope.hasNext = questionNumber < $scope.quiz.questions.length;
-    $scope.isLast = questionNumber === $scope.quiz.questions.length;
     $scope.exam = ExamService.dataFor($scope.examId);
     $scope.answer = $scope.exam.answerFor(questionIndex);
-
-    ModuleInfoService.moduleTitle = $scope.quiz.name;
-    ModuleInfoService.moduleDescription = $scope.quiz.description;
+    QuizService.getById($routeParams.quizId)
+    .then(function(data){
+        $scope.quiz = data;
+        $scope.question = data.questions[questionIndex];
+        $scope.hasNext = questionNumber < data.questions.length;
+        $scope.isLast = questionNumber === data.questions.length;
+        ModuleInfoService.moduleTitle = data.header.title;
+        ModuleInfoService.moduleDescription = data.header.description;
+    });
   });

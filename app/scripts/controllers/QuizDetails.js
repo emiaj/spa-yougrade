@@ -3,8 +3,11 @@
 angular.module('spaYougradeApp')
   .controller('QuizDetailsCtrl', function ($scope, $routeParams,QuizService,ModuleInfoService,RandomStringService) {
 	$scope.quizId = $routeParams.quizId;
-	$scope.quiz = QuizService.getById($routeParams.quizId);
 	$scope.examKey = RandomStringService.getValue(5);
-	ModuleInfoService.moduleTitle = $scope.quiz.name;
-	ModuleInfoService.moduleDescription = $scope.quiz.description;
+	QuizService.getById($routeParams.quizId)
+	.then(function(data){
+		$scope.quiz = data;
+		ModuleInfoService.moduleTitle = $scope.quiz.header.title;
+		ModuleInfoService.moduleDescription = $scope.quiz.header.description;
+	});
 });
