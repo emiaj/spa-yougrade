@@ -2,5 +2,8 @@
 
 angular.module('spaYougradeApp')
   .controller('QuizLanguagesCtrl', function ($scope,QuizLanguagesService) {
-    $scope.languages = QuizLanguagesService.availableLanguages();
+    QuizLanguagesService.availableLanguages()
+    .then(function(data){
+	    $scope.languages = data;
+    });
   });
