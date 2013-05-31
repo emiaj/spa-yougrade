@@ -31,7 +31,7 @@ angular.module('spaYougradeApp')
           }
           deferred.resolve(grade);
         });
-        
+
         return deferred.promise;
       }
     };

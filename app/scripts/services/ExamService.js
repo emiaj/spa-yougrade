@@ -16,15 +16,15 @@ angular.module('spaYougradeApp')
         var answer;
         for (var i = 0; i < this.answers.length; i++) {
           answer = this.answers[i];
-          if(answer.question == question){
+          if(answer.question === question){
             break;
           }
           else{
             answer = null;
           }
-        };
+        }
         if(!answer){
-          answer = {question:question,alternative:-1}
+          answer = {question:question};
         }
         if(!answer.alternative){
           answer.alternative = -1;

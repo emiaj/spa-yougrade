@@ -11,13 +11,13 @@ angular.module('spaYougradeApp')
         $scope.correctPercentage = Math.round(100*($scope.grade.correct/$scope.grade.questions));
         $scope.incorrectPercentage = 100 - $scope.correctPercentage;
         $scope.evaluating = false;
-    });
-    
+      });
+
     $scope.retakeExamId = RandomStringService.getValue(5);
 
     QuizService.getById($scope.quizId).then(function(data){
         $scope.quiz = data;
         ModuleInfoService.moduleTitle = data.header.title;
         ModuleInfoService.moduleDescription = data.header.description;
-    });
+      });
   });

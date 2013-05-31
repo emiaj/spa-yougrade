@@ -3,7 +3,7 @@
 	  {{question.description}}
 	</legend>
 	<div class="span12">
-	  <iframe width="420" height="315" src="http://www.youtube.com/embed/{{question.video}}" frameborder="0" allowfullscreen=""></iframe>
+	  <iframe width="420" height="315" ng-src="http://www.youtube.com/embed/{{question.video}}" frameborder="0" allowfullscreen=""></iframe>
 	</div>
 	<div class="span12">
 	  <hr/>
@@ -15,8 +15,8 @@
 	<div class="span12">
 	  <hr/>
 	  <a class="btn" href="/#">Return to Home</a>
-	  <a ng-show="hasPrevious" class="btn" href="/#/exam/{{examId}}/{{quizId}}/{{previousQuestion}}">Previous Question</a>
-	  <a ng-show="hasNext" class="btn" href="/#/exam/{{examId}}/{{quizId}}/{{nextQuestion}}">Next Question</a>
-	  <a ng-show="isLast" class="btn btn-primary" href="/#/results/{{examId}}/{{quizId}}">View Results</a>
+	  <a ng-show="hasPrevious" class="btn" ng-href="/#/exam/{{examId}}/{{quizId}}/{{previousQuestion}}">Previous Question</a>
+	  <a ng-show="hasNext" class="btn" ng-href="/#/exam/{{examId}}/{{quizId}}/{{nextQuestion}}">Next Question</a>
+	  <a ng-show="isLast" class="btn btn-primary" ng-href="/#/results/{{examId}}/{{quizId}}">View Results</a>
 	</div>
 </fieldset>
