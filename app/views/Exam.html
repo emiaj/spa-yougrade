@@ -8,7 +8,7 @@
 	<div class="span12">
 	  <hr/>
 	    <label class="radio" ng-repeat="alternative in question.alternatives">
-	      <input type="radio" name="SelectedAlternative" ng-model="answer.alternative" value="{{$index}}"></input>
+	      <input type="radio" name="SelectedAlternative" ng-model="answer.alternative" value="{{$index+1}}"></input>
 	      {{$index+1}}. {{alternative.text}}
 	    </label>
 	</div>

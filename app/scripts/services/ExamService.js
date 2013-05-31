@@ -1,28 +1,33 @@
 'use strict';
 
 angular.module('spaYougradeApp')
-  .factory('ExamService', function () {
+  .factory('ExamService', function ($q,$http) {
     // Service logic
     // ...
     // Public API here
 
-    var cache = {
-    };
-
-    var ExamData = function(key){
-      this.key = key;
-      this.answers = {};
+    var ExamData = function(data){
+      this.key = data.key;
+      this.answers = data.answers;
     };
 
     ExamData.prototype = {
       answerFor: function(question){
-        var answer = this.answers[question];
+        var answer;
+        for (var i = 0; i < this.answers.length; i++) {
+          answer = this.answers[i];
+          if(answer.question == question){
+            break;
+          }
+          else{
+            answer = null;
+          }
+        };
         if(!answer){
-          answer = {
-            question:question,
-            alternative:-1
-          };
-          this.answers[question] = answer;
+          answer = {question:question,alternative:-1}
+        }
+        if(!answer.alternative){
+          answer.alternative = -1;
         }
         return answer;
       }
@@ -30,12 +35,20 @@ angular.module('spaYougradeApp')
 
     return {
       dataFor: function (key) {
-        var data = cache[key];
-        if(!data){
-          data = new ExamData(key);
-          cache[key] = data;
-        }
-        return data;
+        var deferred = $q.defer();
+        $http
+        .jsonp('http://localhost:8080/exams/data/' + key + '?callback=JSON_CALLBACK')
+        .success(function(data){
+          deferred.resolve(new ExamData(data));
+        });
+        return deferred.promise;
+      },
+      updateAnswer:function(key,question,alternative){
+        $http
+        .post('http://localhost:8080/exams/data/' + key,{
+          question:question,
+          alternative:parseInt(alternative,10)
+        });
       }
     };
   });

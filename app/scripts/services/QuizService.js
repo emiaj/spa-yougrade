@@ -28,20 +28,20 @@ angular.module('spaYougradeApp')
         quizId=quizId;
         return [
           {
-            question:0,
-            alternative:2
-          },
-          {
             question:1,
-            alternative:1
-          },
-          {
-            question:2,
             alternative:3
           },
           {
+            question:2,
+            alternative:2
+          },
+          {
             question:3,
-            alternative:0
+            alternative:4
+          },
+          {
+            question:4,
+            alternative:1
           }
         ];
       }
