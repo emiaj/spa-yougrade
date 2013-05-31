@@ -12,7 +12,6 @@ angular.module('spaYougradeApp')
         $scope.exam = data;
         $scope.answer = data.answerFor(questionNumber);
         $scope.$watch("answer.alternative",function(newv,oldv){
-            $scope.answer.alternative = newv;
             if(newv != oldv){
                 ExamService.updateAnswer($scope.examId,questionNumber,newv);
             }

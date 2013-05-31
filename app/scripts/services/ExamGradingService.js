@@ -1,12 +1,13 @@
 'use strict';
 
 angular.module('spaYougradeApp')
-  .factory('ExamGradingService', function (ExamService,QuizService) {
+  .factory('ExamGradingService', function (ExamService,QuizService,$q) {
     // Service logic
     // ...
     // Public API here
     return {
       evaluate: function (quizId,examId) {
+        var deferred = $q.defer();
         var exam = ExamService.dataFor(examId);
         var quizAnswers = QuizService.answersFor(quizId);
         var grade = {
@@ -17,17 +18,21 @@ angular.module('spaYougradeApp')
             return this.correct>this.incorrect;
           }
         };
-        for (var i = 0; i < quizAnswers.length; i++) {
-          var answer = quizAnswers[i];
-          var userAnswer = exam.answerFor(answer.question);
-          if(answer.alternative === parseInt(userAnswer.alternative,10)){
-            grade.correct+=1;
+        exam.then(function(data){
+          for (var i = 0; i < quizAnswers.length; i++) {
+            var answer = quizAnswers[i];
+            var userAnswer = data.answerFor(answer.question);
+            if(answer.alternative === parseInt(userAnswer.alternative,10)){
+              grade.correct+=1;
+            }
+            else{
+              grade.incorrect+=1;
+            }
           }
-          else{
-            grade.incorrect+=1;
-          }
-        }
-        return grade;
+          deferred.resolve(grade);
+        });
+        
+        return deferred.promise;
       }
     };
   });

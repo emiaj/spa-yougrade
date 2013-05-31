@@ -1,11 +1,11 @@
 <div class="span12">
   <div class="row">
     <div class="span12">
-      <img ng-src="{{quiz.thumbnail}}" alt=""/>
+      <img ng-src="{{quiz.header.thumbnail}}" alt=""/>
     </div>
   </div>
   <hr/>
-  <div class="row">
+  <div class="row" ng-hide="evaluating">
     <div class="span12">
       <div class="alert alert-block" ng-class="{'alert-error':!grade.approved(),'alert-success':grade.approved()}">
         <h4 ng-show="grade.approved()">
@@ -17,7 +17,7 @@
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row" ng-hide="evaluating">
     <div class="span4">
       <label>
         Correct Answers: ({{grade.correct}})
