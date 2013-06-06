@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('spaYougradeApp')
-  .factory('ExamGradingService', function ($q, $http) {
+  .factory('ExamGradingService', function ($q, $http, ApiEndpointService) {
     // Service logic
     // ...
     // Public API here
@@ -9,7 +9,7 @@ angular.module('spaYougradeApp')
       evaluate: function (quizId, examId) {
         var deferred = $q.defer();
         $http
-          .post('http://localhost:8080/exams/eval', {
+          .post(ApiEndpointService('exams/eval'), {
             quiz: parseInt(quizId, 10),
             exam: examId
           })

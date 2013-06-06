@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('spaYougradeApp')
-  .factory('QuizService', function ($q,$http) {
+  .factory('QuizService', function ($q,$http, ApiEndpointService) {
     // Service logic
     // ...
     // Public API here
@@ -9,7 +9,7 @@ angular.module('spaYougradeApp')
       getByLang: function (lang) {
         var deferred = $q.defer();
         $http
-        .jsonp('http://localhost:8080/quizzes/' + lang + '?callback=JSON_CALLBACK')
+        .jsonp(ApiEndpointService('quizzes/' + lang + '?callback=JSON_CALLBACK'))
         .success(function(data){
           deferred.resolve(data);
         });
@@ -18,7 +18,7 @@ angular.module('spaYougradeApp')
       getById: function(id){
         var deferred = $q.defer();
         $http
-        .jsonp('http://localhost:8080/quizzes/' + id + '?callback=JSON_CALLBACK')
+        .jsonp(ApiEndpointService('quizzes/' + id + '?callback=JSON_CALLBACK'))
         .success(function(data){
           deferred.resolve(data);
         });

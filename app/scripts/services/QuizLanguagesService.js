@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('spaYougradeApp')
-  .factory('QuizLanguagesService', function ($q,$http) {
+  .factory('QuizLanguagesService', function ($q,$http,ApiEndpointService) {
     // Service logic
     // ...
     // Public API here
@@ -9,7 +9,7 @@ angular.module('spaYougradeApp')
       availableLanguages: function () {
         var deferred = $q.defer();
         $http
-        .jsonp('http://localhost:8080/languages/list?callback=JSON_CALLBACK')
+        .jsonp(ApiEndpointService('languages/list?callback=JSON_CALLBACK'))
         .success(function(data){
           deferred.resolve(data);
         });

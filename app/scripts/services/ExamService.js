@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('spaYougradeApp')
-  .factory('ExamService', function ($q,$http) {
+  .factory('ExamService', function ($q,$http,ApiEndpointService) {
     // Service logic
     // ...
     // Public API here
@@ -37,7 +37,7 @@ angular.module('spaYougradeApp')
       dataFor: function (key) {
         var deferred = $q.defer();
         $http
-        .jsonp('http://localhost:8080/exams/data/' + key + '?callback=JSON_CALLBACK')
+        .jsonp(ApiEndpointService('exams/data/' + key + '?callback=JSON_CALLBACK'))
         .success(function(data){
           deferred.resolve(new ExamData(data));
         });
@@ -45,7 +45,7 @@ angular.module('spaYougradeApp')
       },
       updateAnswer:function(key,question,alternative){
         $http
-        .post('http://localhost:8080/exams/data/' + key,{
+        .post(ApiEndpointService('exams/data/' + key),{
           question:question,
           alternative:parseInt(alternative,10)
         });
