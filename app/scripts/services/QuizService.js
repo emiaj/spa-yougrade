@@ -1,49 +1,28 @@
 'use strict';
 
-angular.module('spaYougradeApp')
-  .factory('QuizService', function ($q,$http) {
-    // Service logic
+angular.module('spayougradeapp')
+  .factory('quizservice', function ($q,$http) {
+    // service logic
     // ...
-    // Public API here
+    // public api here
     return {
-      getByLang: function (lang) {
+      getbylang: function (lang) {
         var deferred = $q.defer();
         $http
-        .jsonp('http://localhost:8080/quizzes/' + lang + '?callback=JSON_CALLBACK')
+        .jsonp('http://localhost:8080/quizzes/' + lang + '?callback=json_callback')
         .success(function(data){
           deferred.resolve(data);
         });
         return deferred.promise;
       },
-      getById: function(id){
+      getbyid: function(id){
         var deferred = $q.defer();
         $http
-        .jsonp('http://localhost:8080/quizzes/' + id + '?callback=JSON_CALLBACK')
+        .jsonp('http://localhost:8080/quizzes/' + id + '?callback=json_callback')
         .success(function(data){
           deferred.resolve(data);
         });
         return deferred.promise;
-      },
-      answersFor: function(quizId){
-        quizId=quizId;
-        return [
-          {
-            question:1,
-            alternative:3
-          },
-          {
-            question:2,
-            alternative:2
-          },
-          {
-            question:3,
-            alternative:4
-          },
-          {
-            question:4,
-            alternative:1
-          }
-        ];
       }
     };
   });
