@@ -15,16 +15,25 @@ describe('Controller: QuizDetailsCtrl', function () {
     RandomStringService;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function ($controller, $rootScope, $q) {
     scope = $rootScope.$new();
     routeParams = {quizId:3};
-    theQuiz = {name:'The Quiz Name',description:'The Quiz Description'};
+    theQuiz = {
+      header: {
+        title:'The Quiz Name',
+        description:'The Quiz Description'
+      }
+    };
     QuizService = {
       getById: function(quizId){
+        var deferred = $q.defer();
         if(quizId == routeParams.quizId){
-          return theQuiz;
+          deferred.resolve(theQuiz);
         }
-        return null;
+        else{
+          deferred.resolve(null);
+        }
+        return deferred.promise;
       }
     };
     ModuleInfoService = {};
@@ -44,6 +53,7 @@ describe('Controller: QuizDetailsCtrl', function () {
       ModuleInfoService: ModuleInfoService,
       RandomStringService:RandomStringService
     });
+    $rootScope.$apply();
   }));
   it('sets the quizId',function(){
     expect(scope.quizId).toBe(routeParams.quizId);
@@ -55,9 +65,9 @@ describe('Controller: QuizDetailsCtrl', function () {
     expect(scope.examKey).toBe(theExamKey);
   });
   it('sets the module title',function(){
-    expect(ModuleInfoService.moduleTitle).toBe(theQuiz.name);
+    expect(ModuleInfoService.moduleTitle).toBe(theQuiz.header.title);
   });
   it('sets the module description',function(){
-    expect(ModuleInfoService.moduleDescription).toBe(theQuiz.description);
+    expect(ModuleInfoService.moduleDescription).toBe(theQuiz.header.description);
   });
 });
