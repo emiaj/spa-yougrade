@@ -16,7 +16,7 @@ describe('Controller: ExamCtrl', function () {
     theAnswer;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function ($controller, $rootScope,$q) {
     scope = $rootScope.$new();
     routeParams = {
       examId : 'ab12A',
@@ -25,8 +25,10 @@ describe('Controller: ExamCtrl', function () {
     };
     ModuleInfoService = {};
     theQuiz = {
-      name: 'The Quiz',
-      description: 'The Quiz Description',
+      header: {
+        title: 'The Quiz',
+        description: 'The Quiz Description'
+      },
       questions: [
         {name:'q1'},
         {name:'q2'},
@@ -37,10 +39,14 @@ describe('Controller: ExamCtrl', function () {
     };
     QuizService = {
       getById: function(quizId){
+        var deferred = $q.defer();
         if(quizId === routeParams.quizId){
-          return theQuiz;
+          deferred.resolve(theQuiz);
         }
-        return null;
+        else{
+          deferred.resolve(null);
+        }
+        return deferred.promise;
       }
     };
     theAnswer = {
@@ -49,7 +55,7 @@ describe('Controller: ExamCtrl', function () {
     };
     theExam = {
       answerFor: function(questionId){
-        if(questionId === routeParams.questionId-1){
+        if(questionId === routeParams.questionId){
           return theAnswer;
         }
         return null;
@@ -57,15 +63,19 @@ describe('Controller: ExamCtrl', function () {
     };
     ExamService = {
       dataFor: function(examId){
+        var deferred = $q.defer();
         if(examId === routeParams.examId){
-          return theExam;
+          deferred.resolve(theExam);
         }
-        return null;
+        else{
+          deferred.resolve(null);
+        }
+        return deferred.promise;
       }
     };
-    setControllerUnderTest($controller);
+    setControllerUnderTest($controller,$rootScope);
   }));
-  function setControllerUnderTest($controller){
+  function setControllerUnderTest($controller,$rootScope){
     ExamCtrl = $controller('ExamCtrl', {
       $scope: scope,
       $routeParams: routeParams,
@@ -73,6 +83,7 @@ describe('Controller: ExamCtrl', function () {
       QuizService:QuizService,
       ExamService:ExamService
     });
+    $rootScope.$apply();
   }
   it('sets the quizId',function(){
     expect(scope.quizId).toBe(routeParams.quizId);
@@ -99,10 +110,10 @@ describe('Controller: ExamCtrl', function () {
     expect(scope.answer).toBe(theAnswer);
   });
   it('sets the module title',function(){
-    expect(ModuleInfoService.moduleTitle).toBe(theQuiz.name);
+    expect(ModuleInfoService.moduleTitle).toBe(theQuiz.header.title);
   });
   it('sets the module description',function(){
-    expect(ModuleInfoService.moduleDescription).toBe(theQuiz.description);
+    expect(ModuleInfoService.moduleDescription).toBe(theQuiz.header.description);
   });
   it('sets the hasPrevious field',function(){
     expect(scope.hasPrevious).not.toBeUndefined();
@@ -120,18 +131,18 @@ describe('Controller: ExamCtrl', function () {
       });
     });
     describe('when the questionId is equal to 1',function(){
-      beforeEach(inject(function($controller){
+      beforeEach(inject(function($controller,$rootScope){
         routeParams.questionId = 1;
-        setControllerUnderTest($controller);
+        setControllerUnderTest($controller,$rootScope);
       }));
       it('is false',function(){
         expect(scope.hasPrevious).toBe(false);
       });
     });
     describe('when the questionId is lower than 1',function(){
-      beforeEach(inject(function($controller){
+      beforeEach(inject(function($controller,$rootScope){
         routeParams.questionId = 0;
-        setControllerUnderTest($controller);
+        setControllerUnderTest($controller,$rootScope);
       }));
       it('is false',function(){
         expect(scope.hasPrevious).toBe(false);
@@ -145,18 +156,18 @@ describe('Controller: ExamCtrl', function () {
       });
     });
     describe('when the questionId is equal to the number of questions',function(){
-      beforeEach(inject(function($controller){
+      beforeEach(inject(function($controller,$rootScope){
         routeParams.questionId = theQuiz.questions.length;
-        setControllerUnderTest($controller);
+        setControllerUnderTest($controller,$rootScope);
       }));
       it('is false',function(){
         expect(scope.hasNext).toBe(false);
       });
     });
     describe('when the questionId is greater than the number of questions',function(){
-      beforeEach(inject(function($controller){
+      beforeEach(inject(function($controller,$rootScope){
         routeParams.questionId = theQuiz.questions.length+1;
-        setControllerUnderTest($controller);
+        setControllerUnderTest($controller,$rootScope);
       }));
       it('is false',function(){
         expect(scope.hasNext).toBe(false);
@@ -165,27 +176,27 @@ describe('Controller: ExamCtrl', function () {
   });
   describe('isLast field',function(){
     describe('when the questionId is equal to the number of questions',function(){
-      beforeEach(inject(function($controller){
+      beforeEach(inject(function($controller,$rootScope){
         routeParams.questionId = theQuiz.questions.length;
-        setControllerUnderTest($controller);
+        setControllerUnderTest($controller,$rootScope);
       }));
       it('is true',function(){
         expect(scope.isLast).toBe(true);
       });
     });
     describe('when the questionId is lower than the number of questions',function(){
-      beforeEach(inject(function($controller){
+      beforeEach(inject(function($controller,$rootScope){
         routeParams.questionId = theQuiz.questions.length-1;
-        setControllerUnderTest($controller);
+        setControllerUnderTest($controller,$rootScope);
       }));
       it('is false',function(){
         expect(scope.isLast).toBe(false);
       });
     });
     describe('when the questionId is greater than the number of questions',function(){
-      beforeEach(inject(function($controller){
+      beforeEach(inject(function($controller,$rootScope){
         routeParams.questionId = theQuiz.questions.length+1;
-        setControllerUnderTest($controller);
+        setControllerUnderTest($controller,$rootScope);
       }));
       it('is false',function(){
         expect(scope.isLast).toBe(false);
