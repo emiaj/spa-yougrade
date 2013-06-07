@@ -17,22 +17,29 @@ describe('Controller: ExamResultCtrl', function () {
     theRetakeExamId;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function ($controller, $rootScope, $q) {
     scope = $rootScope.$new();
     routeParams = {
       quizId : 8,
       examId: 'abcde'
     };
     theQuiz = {
-      name:'The Quiz Name',
-      description:'The Quiz Description'
+      header : {
+        title:'The Quiz Name',
+        description:'The Quiz Description'
+      }
     };
     QuizService = {
       getById: function(id){
+        var deferred = $q.defer();
+
         if(id===routeParams.quizId){
-          return theQuiz;
+          deferred.resolve(theQuiz);
         }
-        return null;
+        else{
+          deferred.resolve(null);
+        }
+        return deferred.promise;
       }
     };
     theGrade = {
@@ -41,11 +48,15 @@ describe('Controller: ExamResultCtrl', function () {
     };
     ExamGradingService = {
       evaluate: function(quizId,examId){
+        var deferred = $q.defer();
         if(quizId === routeParams.quizId && 
           examId === routeParams.examId){
-          return theGrade;
+          deferred.resolve(theGrade);
         }
-        return null;
+        else{
+          deferred.resolve(null);
+        }
+        return deferred.promise;
       }
     };
     theRetakeExamId='Zsd45';
@@ -67,6 +78,7 @@ describe('Controller: ExamResultCtrl', function () {
       RandomStringService: RandomStringService,
       ModuleInfoService: ModuleInfoService
     });
+    $rootScope.$apply();
   }));
 
   it('sets the quiz id', function () {
@@ -91,9 +103,9 @@ describe('Controller: ExamResultCtrl', function () {
     expect(scope.retakeExamId).toBe(theRetakeExamId);
   })
   it('sets the module title as the name of the quiz',function(){
-    expect(ModuleInfoService.moduleTitle).toBe(theQuiz.name);
+    expect(ModuleInfoService.moduleTitle).toBe(theQuiz.header.title);
   });
   it('sets the module description as the description of the quiz',function(){
-    expect(ModuleInfoService.moduleDescription).toBe(theQuiz.description);
+    expect(ModuleInfoService.moduleDescription).toBe(theQuiz.header.description);
   });
 });
