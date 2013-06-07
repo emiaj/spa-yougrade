@@ -9,7 +9,7 @@ angular.module('spaYougradeApp')
       evaluate: function (quizId, examId) {
         var deferred = $q.defer();
         $http
-          .post(ApiEndpointService('exams/eval'), {
+          .post(ApiEndpointService.urlFor('exams/eval'), {
             quiz: parseInt(quizId, 10),
             exam: examId
           })

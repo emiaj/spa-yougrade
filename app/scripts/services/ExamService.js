@@ -37,7 +37,7 @@ angular.module('spaYougradeApp')
       dataFor: function (key) {
         var deferred = $q.defer();
         $http
-        .jsonp(ApiEndpointService('exams/data/' + key + '?callback=JSON_CALLBACK'))
+        .jsonp(ApiEndpointService.urlFor('exams/data/' + key + '?callback=JSON_CALLBACK'))
         .success(function(data){
           deferred.resolve(new ExamData(data));
         });
@@ -45,7 +45,7 @@ angular.module('spaYougradeApp')
       },
       updateAnswer:function(key,question,alternative){
         $http
-        .post(ApiEndpointService('exams/data/' + key),{
+        .post(ApiEndpointService.urlFor('exams/data/' + key),{
           question:question,
           alternative:parseInt(alternative,10)
         });

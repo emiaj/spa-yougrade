@@ -9,7 +9,7 @@ angular.module('spaYougradeApp')
       availableLanguages: function () {
         var deferred = $q.defer();
         $http
-        .jsonp(ApiEndpointService('languages/list?callback=JSON_CALLBACK'))
+        .jsonp(ApiEndpointService.urlFor('languages/list?callback=JSON_CALLBACK'))
         .success(function(data){
           deferred.resolve(data);
         });
