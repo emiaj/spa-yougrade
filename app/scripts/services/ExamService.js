@@ -24,10 +24,8 @@ angular.module('spaYougradeApp')
           }
         }
         if(!answer){
-          answer = {question:question};
-        }
-        if(!answer.alternative){
-          answer.alternative = -1;
+          answer = {question:question,alternative:-1};
+          this.answers.push(answer);
         }
         return answer;
       }

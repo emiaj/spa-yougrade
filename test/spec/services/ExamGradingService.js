@@ -15,7 +15,7 @@ describe('Service: ExamGradingService', function () {
     httpBackend;
 
   // mock dependencies
-  beforeEach(inject(function ($injector, ApiSettingsService, $httpBackend) {
+  beforeEach(inject(function (ApiSettingsService, $httpBackend) {
     theQuizId = 7;
     theExamId = 'abc34';
     data = {
