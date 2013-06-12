@@ -40,3 +40,12 @@ How to package the App
 Open a terminal, cd into the project directory and run:
 
 *grunt build*
+
+
+Backend API
+-------------
+I wanted to give a try to akka/spray.io and I implemented the backend using these technologies.
+You'll need at least sbt installed to build and run the backend API.
+The backend API repository can be found here: https://github.com/emiaj/spray-yougrade
+Is still under development, and I plan on paying the technical debt regarding unit testing very soon.
+To get the backend up and running just clone the repository, cd into it, and run "sbt run".
