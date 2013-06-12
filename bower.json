@@ -8,7 +8,8 @@
     "angular-resource": "~1.0.5",
     "angular-cookies": "~1.0.5",
     "angular-sanitize": "~1.0.5",
-    "angular-bootstrap": "~0.3.0"
+    "angular-bootstrap": "~0.3.0",
+    "angular-ui-router.min": "http://angular-ui.github.io/ui-router/release/angular-ui-router.min.js"
   },
   "devDependencies": {
     "angular-mocks": "~1.0.5",
