@@ -270,6 +270,13 @@ module.exports = function (grunt) {
           }
         }]
       }
+    },
+    targethtml: {
+      dist: {
+        files: {
+          '<%= yeoman.dist %>/index.html':'<%= yeoman.dist %>/index.html'
+        }
+      }
     }
   });
 
@@ -309,7 +316,8 @@ module.exports = function (grunt) {
     'ngmin',
     'uglify',
     'rev',
-    'usemin'
+    'usemin',
+    'targethtml',
   ]);
 
   grunt.registerTask('default', ['build']);

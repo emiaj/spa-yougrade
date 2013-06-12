@@ -86,7 +86,12 @@
     <script src="scripts/controllers/ExamResult.js"></script>
     <script src="scripts/services/ExamGradingService.js"></script>
     <script src="scripts/services/ApiEndpointService.js"></script>
+    <!--(if target dev)><!-->
     <script src="scripts/services/ApiSettingsService.js"></script>
+    <!--<!(endif)-->
+    <!--(if target dist)>
+        <script src="scripts/services/ApiSettingsService.Dist.js"></script>
+        <!(endif)-->
     <!-- endbuild -->
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
