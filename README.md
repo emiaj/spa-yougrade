@@ -1,3 +1,9 @@
+SPA YouGrade
+============
+
+[![Build Status](https://travis-ci.org/emiaj/spa-yougrade.png?branch=master)](https://travis-ci.org/emiaj/spa-yougrade)
+
+
 Requirements
 ---------------
 - nodejs v0.10.5
