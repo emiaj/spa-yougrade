@@ -6,13 +6,14 @@ SPA YouGrade
 
 Requirements
 ---------------
-- nodejs v0.10.5
-- npm 1.2.18
+- nodejs v0.10.12
+- npm 1.2.32
 - Ruby 1.9.3p194
 - grunt-cli v0.1.7
 - grunt v0.4.1
-- yo 1.2.18
-- bower 0.9.0
+- yo 1.0.0-beta.4
+- bower 0.9.2
+- phantomjs 1.6.0
 
 
 **(1) To get grunt-cli, grunt, bower and yo, you could just run "npm install -g yeoman", without the quotes.**
